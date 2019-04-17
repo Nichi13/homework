@@ -26,24 +26,24 @@ class CaseTests (unittest.TestCase):
     #     print(self.directories)
     #
 
-    def test_1(self):
+    def test_remove_doc_from_shelf(self):
         old_dir = directories.copy()
         remove_doc_from_shelf('10006')
         self.assertNotEqual(old_dir, directories)
 
-    def test_2(self):
+    def test_add_new_shelf(self):
         old_dict = directories.copy()
         add_new_shelf('55555')
         self.assertNotEqual(old_dict, directories)
 
     @mock.patch('app.input', return_value='10006')
-    def test_3(self, input):
+    def test_delete_doc(self, input):
         old_docs = documents.copy()
         delete_doc()
         i=documents
         self.assertNotEqual(old_docs,i)
 
     @mock.patch('app.input', return_value='10006')
-    def test_4(self, input):
+    def test_get_doc_shelf(self, input):
         resalt = get_doc_shelf()
         self.assertEqual('2',resalt)
