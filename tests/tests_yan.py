@@ -1,6 +1,7 @@
 import unittest
 import requests
 
+#  я бы вынес в def setUp(self): запрос, но он различается у тестов
 
 class CaseTests (unittest.TestCase):
 
