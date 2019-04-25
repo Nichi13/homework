@@ -43,13 +43,15 @@ class CaseTests (unittest.TestCase):
     @mock.patch('app.input', return_value='10006')
     def test_3(self, input):
         old_docs = self.documents.copy()
-        delete_doc()
+        with mock.patch('app.documents', self.documents):
+            delete_doc()
         i=self.documents
         self.assertNotEqual(old_docs,i)
 
     @mock.patch('app.input', return_value='10006')
     def test_4(self, input):
-        resalt = get_doc_shelf()
+        with mock.patch('app.directories', self.directories):
+            resalt = get_doc_shelf()
         self.assertEqual('2',resalt)
 
 
